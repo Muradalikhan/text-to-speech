@@ -1,3 +1,13 @@
 .App {
   text-align: center;
 }
+.flex-box{
+  width: 100%;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.h-20{
+  height: 20px;
+}
