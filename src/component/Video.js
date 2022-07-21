@@ -9,7 +9,6 @@ const Video = ({ src, controls, width, playVideo }) => {
   const pauseTheVideo = () => {
     videoRef.current?.pause();
   };
-  console.log(playVideo);
   if (playVideo) {
     playTheVideo();
   } else {
