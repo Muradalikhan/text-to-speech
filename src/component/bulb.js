@@ -1,7 +1,7 @@
 import React from "react";
-import bulbOn from "../assets/bulb-on.jpg";
-import bulbOff from "../assets/bulb-off.jpg";
-import bulbBreak from "../assets/bulb-break.jpg";
+import bulbOn from "../assets/bulb-on.png";
+import bulbOff from "../assets/bulb-off.png";
+import bulbBreak from "../assets/bulb-break.png";
 
 const Bulb = ({ switchOn, Break }) => {
   return (
