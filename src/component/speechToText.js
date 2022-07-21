@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
+import { BsFillMicFill, BsFillMicMuteFill } from "react-icons/bs";
+import { ThemeContext } from "../App";
 
 const Dictaphone = ({ setSwitchOn, setBulbBreak, setPlayVideo }) => {
+  const { setTheme } = useContext(ThemeContext);
   const commands = [
     {
       command: "clear",
@@ -21,34 +24,44 @@ const Dictaphone = ({ setSwitchOn, setBulbBreak, setPlayVideo }) => {
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesn't support speech recognition.</span>;
   }
-  if (transcript === "switch on") {
-    setSwitchOn(true);
-    setBulbBreak(false);
-  } else if (transcript === "switch off") {
-    setBulbBreak(false);
-    setSwitchOn(false);
-  } else if (transcript === "break") {
-    setSwitchOn(false);
-    setBulbBreak(true);
-  } else if (transcript === "play") {
+ if (transcript === "play") {
     setPlayVideo(true);
-    setBulbBreak(false);
-    setSwitchOn(false);
-    resetTranscript()
+    resetTranscript();
   } else if (transcript === "pause") {
-    setPlayVideo(false);
-    setBulbBreak(false);
+    setPlayVideo(false)
+    resetTranscript();
+  } else if (transcript === "light mode") {
+    setTheme("light");
     setSwitchOn(false);
-    resetTranscript()
+    resetTranscript();
+  } else if (transcript === "dark mode") {
+    setTheme("dark");
+    setSwitchOn(true);
+    resetTranscript();
   }
 
   return (
-    <div>
-      <p>Microphone: {listening ? "on" : "off"}</p>
-      <button onClick={startListening}>Start</button>
-      <button onClick={SpeechRecognition.stopListening}>Stop</button>
-      <button onClick={resetTranscript}>Reset</button>
-      <p className="h-20">{transcript}</p>
+    <div className="flex-col">
+      <p>
+        {listening ? (
+          <BsFillMicFill
+            fontSize="30px"
+            onClick={SpeechRecognition.stopListening}
+            className="mic-icon"
+          />
+        ) : (
+          <BsFillMicMuteFill
+            fontSize="30px"
+            className="mic-icon"
+            onClick={startListening}
+          />
+        )}
+      </p>
+
+      <button className="btn" onClick={resetTranscript}>
+        Reset
+      </button>
+      <p className="transcript">{transcript}</p>
     </div>
   );
 };
