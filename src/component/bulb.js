@@ -1,10 +1,9 @@
 import React,{useContext} from "react";
 import bulbOn from "../assets/bulb-on.png";
 import bulbOff from "../assets/bulb-off.png";
-import bulbBreak from "../assets/bulb-break.png";
 import { ThemeContext } from "../App";
 
-const Bulb = ({ switchOn, Break }) => {
+const Bulb = () => {
   const {theme}=useContext(ThemeContext)
   return (
     <img
