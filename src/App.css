@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Mochiy Pop One', sans-serif;
+  letter-spacing: 0.5px;
 }
 .App {
   text-align: center;
@@ -17,9 +20,8 @@
   background-color: #223;
   color: #fff;
 }
-.flex-col {
-  display: flex;
-  flex-direction: column;
+.flex {
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -44,8 +46,8 @@
   color: #fff;
 }
 
-.btn{
-  padding:10px;
+.btn {
+  padding: 10px;
   width: 100px;
   border: none;
   border-radius: 10px;
@@ -53,6 +55,13 @@
   letter-spacing: 0.5px;
 }
 
-#dark .btn{
+#dark .btn {
   background-color: orange;
-} 
+}
+
+.checkedIcon {
+  position: absolute;
+  top: 3px;
+  left: 5px;
+  color: #fff;
+}
