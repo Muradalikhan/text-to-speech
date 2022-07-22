@@ -5,7 +5,7 @@ import SpeechRecognition, {
 import { BsFillMicFill, BsFillMicMuteFill } from "react-icons/bs";
 import { ThemeContext } from "../App";
 
-const Dictaphone = ({ setSwitchOn, setBulbBreak, setPlayVideo }) => {
+const Dictaphone = ({ setPlayVideo, setChecked }) => {
   const { setTheme } = useContext(ThemeContext);
   const commands = [
     {
@@ -24,24 +24,24 @@ const Dictaphone = ({ setSwitchOn, setBulbBreak, setPlayVideo }) => {
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesn't support speech recognition.</span>;
   }
- if (transcript === "play") {
+  if (transcript === "play") {
     setPlayVideo(true);
     resetTranscript();
   } else if (transcript === "pause") {
-    setPlayVideo(false)
+    setPlayVideo(false);
     resetTranscript();
   } else if (transcript === "light mode") {
     setTheme("light");
-    setSwitchOn(false);
+    setChecked(false);
     resetTranscript();
   } else if (transcript === "dark mode") {
     setTheme("dark");
-    setSwitchOn(true);
+    setChecked(true);
     resetTranscript();
   }
 
   return (
-    <div className="flex-col">
+    <div className="flex">
       <p>
         {listening ? (
           <BsFillMicFill
