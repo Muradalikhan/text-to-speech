@@ -41,8 +41,8 @@ const Dictaphone = ({ setPlayVideo, setChecked }) => {
   }
 
   return (
-    <div className="flex">
-      <p>
+    <div>
+      <div className="flex">
         {listening ? (
           <BsFillMicFill
             fontSize="30px"
@@ -56,11 +56,10 @@ const Dictaphone = ({ setPlayVideo, setChecked }) => {
             onClick={startListening}
           />
         )}
-      </p>
-
-      <button className="btn" onClick={resetTranscript}>
-        Reset
-      </button>
+        <button className="btn" onClick={resetTranscript}>
+          Reset
+        </button>
+      </div>
       <p className="transcript">{transcript}</p>
     </div>
   );
