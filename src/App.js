@@ -21,20 +21,30 @@ function App() {
     <ThemeContext.Provider value={{ theme, setTheme }}>
       <div className="App" id={theme}>
         <h1>Speech to text</h1>
-        <Dictaphone setPlayVideo={setPlayVideo} setChecked={setChecked} />
-        <Switch
-          onChange={handleChecked}
-          checked={checked}
-          checkedIcon={<BsSun fontSize="20px" className="checkedIcon" />}
-          uncheckedIcon={
-            <BsMoonStars fontSize="18px" className="checkedIcon" />
-          }
-          offColor="#223"
-          onColor="#14C9E4"
-        />
+        <div className="flex">
+          <Dictaphone setPlayVideo={setPlayVideo} setChecked={setChecked} />
+          <Switch
+            onChange={handleChecked}
+            checked={checked}
+            checkedIcon={<BsSun fontSize="20px" className="checkedIcon" />}
+            uncheckedIcon={
+              <BsMoonStars fontSize="18px" className="checkedIcon" />
+            }
+            offColor="#223"
+            onColor="#14C9E4"
+          />
+        </div>
         <div className="flex-box">
           <Bulb />
           <Video src={videoSrc} width="40%" controls playVideo={playVideo} />
+        </div>
+        <div className="commands">
+          <h3>Commands</h3>
+          <ul>
+            <li>Clear</li>
+            <li>light mode</li>
+            <li>dark mode</li>
+          </ul>
         </div>
       </div>
     </ThemeContext.Provider>
