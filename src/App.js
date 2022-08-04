@@ -1,11 +1,11 @@
 import React, { useState, createContext } from "react";
-import "./App.css";
-import Bulb from "./component/bulb";
-import Dictaphone from "./component/speechToText";
-import Video from "./component/Video";
-import videoSrc from "./assets/video1.mp4";
-import Switch from "react-switch";
 import { BsSun, BsMoonStars } from "react-icons/bs";
+import Dictaphone from "./component/speechToText";
+import videoSrc from "./assets/video1.mp4";
+import Video from "./component/Video";
+import Bulb from "./component/bulb";
+import Switch from "react-switch";
+import "./App.css";
 
 export const ThemeContext = createContext();
 
