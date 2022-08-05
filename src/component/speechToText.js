@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect,useCallback } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
 import { BsFillMicFill, BsFillMicMuteFill } from "react-icons/bs";
+import { toast } from "react-toastify";
 import { ThemeContext } from "../App";
 
 const Dictaphone = ({ setPlayVideo, setChecked }) => {
@@ -21,6 +22,16 @@ const Dictaphone = ({ setPlayVideo, setChecked }) => {
   } = useSpeechRecognition({ commands });
   const startListening = () =>
     SpeechRecognition.startListening({ continuous: true });
+
+  const showMessage = useCallback(() => {
+    if (transcript !== "") {
+      toast.success(transcript);
+    }
+  }, [transcript]);
+  useEffect(() => {
+    showMessage();
+  }, [transcript, showMessage]);
+
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesn't support speech recognition.</span>;
   }
