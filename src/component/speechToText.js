@@ -1,4 +1,4 @@
-import React, { useContext, useEffect,useCallback } from "react";
+import React, { useContext, useEffect, useCallback } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
@@ -24,31 +24,27 @@ const Dictaphone = ({ setPlayVideo, setChecked }) => {
     SpeechRecognition.startListening({ continuous: true });
 
   const showMessage = useCallback(() => {
-    if (transcript !== "") {
-      toast.success(transcript);
-    }
-  }, [transcript]);
+    transcript !== "" && toast.info(transcript);
+    const timer = setTimeout(() => resetTranscript(), 1000);
+    return () => clearInterval(timer);
+  }, [transcript, resetTranscript]);
   useEffect(() => {
     showMessage();
-  }, [transcript, showMessage]);
+  }, [showMessage]);
 
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesn't support speech recognition.</span>;
   }
   if (transcript === "play") {
     setPlayVideo(true);
-    resetTranscript();
   } else if (transcript === "pause") {
     setPlayVideo(false);
-    resetTranscript();
   } else if (transcript === "light mode") {
     setTheme("light");
     setChecked(false);
-    resetTranscript();
   } else if (transcript === "dark mode") {
     setTheme("dark");
     setChecked(true);
-    resetTranscript();
   }
 
   return (
@@ -71,7 +67,6 @@ const Dictaphone = ({ setPlayVideo, setChecked }) => {
           Reset
         </button>
       </div>
-      <p className="transcript">{transcript}</p>
     </div>
   );
 };
