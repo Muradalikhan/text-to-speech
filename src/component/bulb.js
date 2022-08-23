@@ -9,8 +9,8 @@ const Bulb = () => {
     <img
       className="bulb-img"
       src={theme === "dark" ? bulbOn : bulbOff}
-      width="300px"
-      height="400px"
+      width={theme === "dark" ?"270px":"300px"}
+      height={theme === "dark" ?"360px":"400px"}
       alt="bulb-img"
     />
   );
